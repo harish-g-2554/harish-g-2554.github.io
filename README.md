@@ -2,6 +2,8 @@
 
 A modern, responsive portfolio website featuring quantum-inspired animations and a sleek dark/light mode toggle.
 
+🌐 Live Site: harish-g-2554.github.io
+
 ## ✨ Features
 
 - **Quantum-Inspired Design** - Interactive particle animations and wave effects
@@ -78,3 +80,4 @@ The site defaults to dark mode. Click the moon/sun button in the bottom-right co
 ## 📄 License
 
 © 2026 Harish G. All rights reserved.
+
