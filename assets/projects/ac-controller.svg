@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">AC Controller Audio Model</title>
+  <desc id="desc">Abstract neon audio waveform with machine learning panel style.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="45%" stop-color="#155e75"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#67e8f9"/>
+      <stop offset="50%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#bfdbfe"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <g opacity="0.18" stroke="#e0f2fe">
+    <path d="M0 120h1200M0 220h1200M0 320h1200M0 420h1200M0 520h1200"/>
+    <path d="M120 0v700M260 0v700M400 0v700M540 0v700M680 0v700M820 0v700M960 0v700M1100 0v700"/>
+  </g>
+  <rect x="105" y="120" width="990" height="470" rx="26" fill="rgba(15,23,42,0.38)" stroke="#67e8f9" stroke-opacity="0.65"/>
+  <path d="M130 410 C220 320,300 480,390 390 C470 300,550 520,640 380 C720 260,800 500,890 360 C970 260,1040 420,1080 340"
+        fill="none" stroke="url(#line)" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+  <circle cx="390" cy="390" r="13" fill="#a5f3fc"/>
+  <circle cx="640" cy="380" r="13" fill="#a5f3fc"/>
+  <circle cx="890" cy="360" r="13" fill="#a5f3fc"/>
+  <g fill="#e0f2fe" opacity="0.9" font-family="Arial, sans-serif" font-size="36" font-weight="700">
+    <text x="150" y="190">AUDIO SIGNAL LAB</text>
+    <text x="150" y="238" font-size="22" opacity="0.85">CNN SPECTROGRAM CLASSIFIER</text>
+  </g>
+</svg>

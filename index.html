@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <canvas id="quantum-canvas" aria-hidden="true"></canvas>
+    <div id="quantum-particles" aria-hidden="true"></div>
+
     <!-- Navigation -->
     <nav class="quantum-nav">
         <div class="nav-logo">
@@ -418,14 +421,16 @@
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
         <div class="section-header">
-            <h2 class="section-title quantum-text" data-text="Featured Projects">Featured Projects</h2>
+            <h2 class="section-title quantum-text" data-text="Project Gallery">Project Gallery</h2>
             <div class="quantum-line"></div>
         </div>
         <div class="projects-grid">
             <!-- ML-Based AC Controller -->
             <a href="https://github.com/harish-g-2554" target="_blank" class="project-card-link">
             <div class="project-card quantum-card">
-                <div class="project-image">
+                <div class="project-image" data-art="ac">
+                    <div class="project-art-layer"></div>
+                    <div class="project-art-grid"></div>
                     <div class="project-overlay">
                         <div class="project-links">
                             <span class="project-link"><i class="fab fa-github"></i></span>
@@ -435,6 +440,7 @@
                     <div class="project-placeholder">
                         <i class="fas fa-microphone"></i>
                     </div>
+                    <div class="project-image-label">Audio CNN Lab</div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">ML-Based AC Controller Using Sound Detection</h3>
@@ -453,7 +459,9 @@
             <!-- MINDFULL AI -->
             <a href="https://github.com/harish-g-2554" target="_blank" class="project-card-link">
             <div class="project-card quantum-card">
-                <div class="project-image">
+                <div class="project-image" data-art="mindfull">
+                    <div class="project-art-layer"></div>
+                    <div class="project-art-grid"></div>
                     <div class="project-overlay">
                         <div class="project-links">
                             <span class="project-link"><i class="fab fa-github"></i></span>
@@ -463,6 +471,7 @@
                     <div class="project-placeholder">
                         <i class="fas fa-heart"></i>
                     </div>
+                    <div class="project-image-label">Conversational AI</div>
                 </div>
                 <div class="project-content">
                     <div class="project-badge">🧠 AI Wellness</div>
@@ -482,7 +491,9 @@
             <!-- Diabetes Prediction -->
             <a href="https://github.com/harish-g-2554" target="_blank" class="project-card-link">
             <div class="project-card quantum-card">
-                <div class="project-image">
+                <div class="project-image" data-art="diabetes">
+                    <div class="project-art-layer"></div>
+                    <div class="project-art-grid"></div>
                     <div class="project-overlay">
                         <div class="project-links">
                             <span class="project-link"><i class="fab fa-github"></i></span>
@@ -491,6 +502,7 @@
                     <div class="project-placeholder">
                         <i class="fas fa-heartbeat"></i>
                     </div>
+                    <div class="project-image-label">Deep Health Model</div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Diabetes Prediction Using Deep Learning</h3>
@@ -509,7 +521,9 @@
             <!-- Fraud Detection -->
             <a href="https://github.com/harish-g-2554" target="_blank" class="project-card-link">
             <div class="project-card quantum-card">
-                <div class="project-image">
+                <div class="project-image" data-art="fraud">
+                    <div class="project-art-layer"></div>
+                    <div class="project-art-grid"></div>
                     <div class="project-overlay">
                         <div class="project-links">
                             <span class="project-link"><i class="fab fa-github"></i></span>
@@ -518,6 +532,7 @@
                     <div class="project-placeholder">
                         <i class="fas fa-shield-alt"></i>
                     </div>
+                    <div class="project-image-label">Fraud Lens</div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Fraudulent Insurance Claim Detection</h3>
@@ -536,7 +551,9 @@
             <!-- Tourism Guide -->
             <a href="https://github.com/harish-g-2554" target="_blank" class="project-card-link">
             <div class="project-card quantum-card">
-                <div class="project-image">
+                <div class="project-image" data-art="tourism">
+                    <div class="project-art-layer"></div>
+                    <div class="project-art-grid"></div>
                     <div class="project-overlay">
                         <div class="project-links">
                             <span class="project-link"><i class="fab fa-github"></i></span>
@@ -545,6 +562,7 @@
                     <div class="project-placeholder">
                         <i class="fas fa-globe"></i>
                     </div>
+                    <div class="project-image-label">Explore Engine</div>
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Tourism Guide Web Application</h3>
@@ -679,6 +697,7 @@
         <i class="fas fa-sun"></i>
     </button>
 
+    <script src="quantum.js"></script>
     <script src="main.js"></script>
     <script>
         // Theme Toggle Functionality

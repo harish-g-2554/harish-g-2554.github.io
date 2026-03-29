@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initTimeline();
     initContactForm();
     initParallax();
+    initHeroDepth();
+    init3DTilt();
     initMobileMenu();
 });
 
@@ -341,14 +343,92 @@ function createParticleBurst(element) {
 // PARALLAX EFFECT
 // ============================================
 function initParallax() {
-    const parallaxElements = document.querySelectorAll('.quantum-grid, .profile-container');
-    
+    const grid = document.querySelector('.quantum-grid');
+    if (!grid) return;
+
     window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        
-        parallaxElements.forEach(el => {
-            const speed = el.dataset.speed || 0.5;
-            el.style.transform = `translateY(${scrolled * speed}px)`;
+        const offset = Math.min(window.scrollY * 0.06, 35);
+        grid.style.backgroundPosition = `0 ${offset}px`;
+    });
+}
+
+// ============================================
+// HERO DEPTH EFFECT
+// ============================================
+function initHeroDepth() {
+    const hero = document.querySelector('.hero-section');
+    const profile = document.querySelector('.profile-container');
+    const heroText = document.querySelector('.hero-text');
+
+    const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!hero || !profile || !heroText || !isFinePointer) return;
+
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+
+        const rotateY = (x - 0.5) * 16;
+        const rotateX = (0.5 - y) * 12;
+
+        profile.style.setProperty('--hero-rot-x', `${rotateX.toFixed(2)}deg`);
+        profile.style.setProperty('--hero-rot-y', `${rotateY.toFixed(2)}deg`);
+        profile.style.setProperty('--hero-shift-x', `${((x - 0.5) * 16).toFixed(2)}px`);
+        profile.style.setProperty('--hero-shift-y', `${((y - 0.5) * 12).toFixed(2)}px`);
+
+        heroText.style.setProperty('--hero-text-x', `${((0.5 - x) * 10).toFixed(2)}px`);
+        heroText.style.setProperty('--hero-text-y', `${((0.5 - y) * 8).toFixed(2)}px`);
+    });
+
+    hero.addEventListener('mouseleave', () => {
+        profile.style.setProperty('--hero-rot-x', '0deg');
+        profile.style.setProperty('--hero-rot-y', '0deg');
+        profile.style.setProperty('--hero-shift-x', '0px');
+        profile.style.setProperty('--hero-shift-y', '0px');
+        heroText.style.setProperty('--hero-text-x', '0px');
+        heroText.style.setProperty('--hero-text-y', '0px');
+    });
+}
+
+// ============================================
+// 3D TILT EFFECTS
+// ============================================
+function init3DTilt() {
+    const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!isFinePointer) return;
+
+    const tiltTargets = document.querySelectorAll(
+        '.project-card, .skill-item, .contact-item, .timeline-content, .stat-item, .research-paper'
+    );
+
+    tiltTargets.forEach((element) => {
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+
+            const rotateY = (x - 0.5) * 10;
+            const rotateX = (0.5 - y) * 8;
+
+            element.style.setProperty('--tilt-x', `${rotateX.toFixed(2)}deg`);
+            element.style.setProperty('--tilt-y', `${rotateY.toFixed(2)}deg`);
+
+            if (element.classList.contains('project-card')) {
+                const imageShiftX = (x - 0.5) * 22;
+                const imageShiftY = (y - 0.5) * 18;
+                element.style.setProperty('--img-shift-x', `${imageShiftX.toFixed(2)}px`);
+                element.style.setProperty('--img-shift-y', `${imageShiftY.toFixed(2)}px`);
+            }
+        });
+
+        element.addEventListener('mouseleave', () => {
+            element.style.setProperty('--tilt-x', '0deg');
+            element.style.setProperty('--tilt-y', '0deg');
+
+            if (element.classList.contains('project-card')) {
+                element.style.setProperty('--img-shift-x', '0px');
+                element.style.setProperty('--img-shift-y', '0px');
+            }
         });
     });
 }

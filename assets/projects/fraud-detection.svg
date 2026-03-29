@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Fraud Detection Security Visual</title>
+  <desc id="desc">Security dashboard style image with shield and anomaly markers.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#422006"/>
+      <stop offset="55%" stop-color="#9a3412"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffedd5"/>
+      <stop offset="100%" stop-color="#fdba74"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <g opacity="0.14" stroke="#ffedd5" stroke-width="1">
+    <path d="M0 120h1200M0 220h1200M0 320h1200M0 420h1200M0 520h1200M0 620h1200"/>
+    <path d="M120 0v700M260 0v700M400 0v700M540 0v700M680 0v700M820 0v700M960 0v700M1100 0v700"/>
+  </g>
+  <path d="M600 150 L780 220 V380 C780 470 710 545 600 595 C490 545 420 470 420 380 V220 Z" fill="url(#shield)" opacity="0.95"/>
+  <path d="M600 215 V515 M510 320 H690" stroke="#7c2d12" stroke-width="22" stroke-linecap="round"/>
+  <g fill="#fed7aa" opacity="0.95">
+    <circle cx="220" cy="280" r="14"/><circle cx="310" cy="470" r="14"/><circle cx="980" cy="250" r="14"/><circle cx="900" cy="500" r="14"/>
+  </g>
+  <g fill="#fff7ed" font-family="Arial, sans-serif" font-size="36" font-weight="700">
+    <text x="120" y="120">FRAUD DETECTION ENGINE</text>
+    <text x="120" y="165" font-size="22" opacity="0.9">RANDOM FOREST + FEATURE RANKING</text>
+  </g>
+</svg>

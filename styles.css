@@ -115,6 +115,30 @@ body {
     position: relative;
 }
 
+#quantum-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#quantum-particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.quantum-nav,
+section,
+.quantum-footer,
+.theme-toggle {
+    position: relative;
+    z-index: 1;
+}
+
 /* Dark mode background */
 [data-theme="dark"] body {
     background: radial-gradient(ellipse at center, var(--quantum-dark) 0%, var(--quantum-darker) 100%);
@@ -277,6 +301,8 @@ body {
     max-width: 1400px;
     width: 100%;
     z-index: 1;
+    perspective: 1400px;
+    transform-style: preserve-3d;
 }
 
 /* Profile Container with Quantum Effects */
@@ -287,6 +313,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transform-style: preserve-3d;
+    transform: translate3d(var(--hero-shift-x, 0px), var(--hero-shift-y, 0px), 40px) rotateX(var(--hero-rot-x, 0deg)) rotateY(var(--hero-rot-y, 0deg));
+    transition: transform 220ms ease;
 }
 
 .profile-image {
@@ -416,6 +445,8 @@ body {
 .hero-text {
     flex: 1;
     max-width: 600px;
+    transform: translate3d(var(--hero-text-x, 0px), var(--hero-text-y, 0px), 60px);
+    transition: transform 240ms ease;
 }
 
 .name-container {
@@ -654,6 +685,10 @@ section {
     transition: var(--transition-smooth);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(var(--lift, 0px));
+    transition: transform 220ms ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .quantum-card::before {
@@ -674,7 +709,7 @@ section {
 .quantum-card:hover {
     border-color: var(--quantum-primary);
     box-shadow: 0 10px 30px -5px rgba(38, 38, 38, 0.2);
-    transform: translateY(-5px);
+    --lift: -6px;
 }
 
 /* ============================================
@@ -781,11 +816,13 @@ section {
     padding: 1rem;
     background: var(--quantum-gray);
     border-radius: 10px;
-    transition: var(--transition-smooth);
+    transform-style: preserve-3d;
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(var(--lift, 0px));
+    transition: transform 180ms ease, background 0.3s ease;
 }
 
 .skill-item:hover {
-    transform: translateY(-5px);
+    --lift: -8px;
     background: var(--card-border);
 }
 
@@ -1243,7 +1280,7 @@ section {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
 }
 
@@ -1257,24 +1294,98 @@ section {
 .project-card {
     padding: 0;
     overflow: hidden;
+    transform-style: preserve-3d;
+    border-radius: 20px;
+    box-shadow: 0 18px 44px -26px rgba(0, 0, 0, 0.45);
 }
 
 .project-image {
     position: relative;
-    height: 200px;
+    height: 230px;
     background: linear-gradient(135deg, var(--quantum-gray), var(--quantum-dark));
     overflow: hidden;
+    transform: translateZ(18px);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.project-art-layer,
+.project-art-grid {
+    position: absolute;
+    inset: -10%;
+    pointer-events: none;
+    transition: transform 260ms ease;
+}
+
+.project-art-layer {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: saturate(1.1) contrast(1.05);
+    transform: scale(1.06) translate3d(var(--img-shift-x, 0px), var(--img-shift-y, 0px), 0);
+}
+
+.project-art-grid {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.35;
+    transform: scale(1.12) translate3d(calc(var(--img-shift-x, 0px) * -0.35), calc(var(--img-shift-y, 0px) * -0.35), 0);
+}
+
+.project-image[data-art="ac"] .project-art-layer {
+    background-image: url('assets/projects/ac-controller.svg');
+}
+
+.project-image[data-art="mindfull"] .project-art-layer {
+    background-image: url('assets/projects/mindfull-ai.svg');
+}
+
+.project-image[data-art="diabetes"] .project-art-layer {
+    background-image: url('assets/projects/diabetes-prediction.svg');
+}
+
+.project-image[data-art="fraud"] .project-art-layer {
+    background-image: url('assets/projects/fraud-detection.svg');
+}
+
+.project-image[data-art="tourism"] .project-art-layer {
+    background-image: url('assets/projects/tourism-guide.svg');
 }
 
 .project-placeholder {
-    width: 100%;
-    height: 100%;
+    position: relative;
+    width: 90px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
-    color: var(--quantum-primary);
-    opacity: 0.3;
+    margin: 0 auto;
+    margin-top: 54px;
+    font-size: 2.2rem;
+    color: #ffffff;
+    opacity: 0.95;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 14px 35px -20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    transform: translateZ(28px);
+}
+
+.project-image-label {
+    position: absolute;
+    left: 16px;
+    bottom: 14px;
+    font-family: var(--font-primary);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.62);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    transform: translateZ(24px);
 }
 
 .project-overlay {
@@ -1283,7 +1394,7 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--quantum-primary);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.68), rgba(64, 64, 64, 0.55));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1293,6 +1404,14 @@ section {
 
 .project-card:hover .project-overlay {
     opacity: 1;
+}
+
+.project-card:hover .project-art-layer {
+    transform: scale(1.08) translate3d(calc(var(--img-shift-x, 0px) * 1.2), calc(var(--img-shift-y, 0px) * 1.2), 0);
+}
+
+.project-card:hover .project-art-grid {
+    transform: scale(1.14) translate3d(calc(var(--img-shift-x, 0px) * -0.5), calc(var(--img-shift-y, 0px) * -0.5), 0);
 }
 
 .project-links {
@@ -1312,11 +1431,11 @@ section {
     font-size: 1.2rem;
     text-decoration: none;
     transition: var(--transition-smooth);
-    transform: translateY(20px);
+    transform: translateY(20px) translateZ(0);
 }
 
 .project-card:hover .project-link {
-    transform: translateY(0);
+    transform: translateY(0) translateZ(30px);
 }
 
 .project-link:hover {
@@ -1326,6 +1445,7 @@ section {
 
 .project-content {
     padding: 1.5rem;
+    transform: translateZ(24px);
 }
 
 .project-badge {
@@ -1795,6 +1915,23 @@ section {
     .timeline-item:nth-child(even) .timeline-description li::before {
         left: 0;
         right: auto;
+    }
+
+    .profile-container,
+    .hero-text,
+    .quantum-card,
+    .skill-item {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-container,
+    .hero-text,
+    .quantum-card,
+    .skill-item {
+        transition: none !important;
+        transform: none !important;
     }
 }
 

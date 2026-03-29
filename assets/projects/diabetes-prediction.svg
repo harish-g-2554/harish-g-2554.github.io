@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Diabetes Deep Learning Visual</title>
+  <desc id="desc">Medical analytics themed graphic with neural blocks and heartbeat curve.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3f1d1d"/>
+      <stop offset="55%" stop-color="#9f1239"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+    <linearGradient id="ecg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fecdd3"/>
+      <stop offset="50%" stop-color="#fda4af"/>
+      <stop offset="100%" stop-color="#ffe4e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <g opacity="0.17" stroke="#ffe4e6">
+    <path d="M0 110h1200M0 210h1200M0 310h1200M0 410h1200M0 510h1200M0 610h1200"/>
+  </g>
+  <path d="M100 390 H250 L300 300 L355 480 L430 260 L510 390 H700 L760 330 L825 430 L900 280 L980 390 H1110"
+        fill="none" stroke="url(#ecg)" stroke-width="9" stroke-linecap="round"/>
+  <g fill="#fecdd3" opacity="0.95">
+    <rect x="150" y="150" width="110" height="110" rx="14"/>
+    <rect x="300" y="150" width="110" height="110" rx="14"/>
+    <rect x="450" y="150" width="110" height="110" rx="14"/>
+    <rect x="600" y="150" width="110" height="110" rx="14"/>
+  </g>
+  <g fill="#fff1f2" font-family="Arial, sans-serif" font-size="36" font-weight="700">
+    <text x="120" y="640">DEEP LEARNING HEALTH PREDICTION</text>
+    <text x="120" y="95" font-size="22" opacity="0.9">ANN + LSTM + RNN</text>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Tourism Guide World Visual</title>
+  <desc id="desc">Travel platform themed artwork with routes, pins, and globe silhouette.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="55%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <g opacity="0.18" stroke="#ccfbf1">
+    <path d="M0 130h1200M0 240h1200M0 350h1200M0 460h1200M0 570h1200"/>
+  </g>
+  <circle cx="600" cy="360" r="210" fill="rgba(204,251,241,0.2)" stroke="#99f6e4" stroke-width="3"/>
+  <g stroke="#99f6e4" stroke-width="3" fill="none" opacity="0.7">
+    <ellipse cx="600" cy="360" rx="150" ry="210"/>
+    <ellipse cx="600" cy="360" rx="210" ry="75"/>
+    <path d="M390 360h420"/>
+  </g>
+  <path d="M220 570 C360 500, 420 220, 630 260 C790 290, 860 490, 1020 430" fill="none" stroke="#ecfeff" stroke-width="7" stroke-dasharray="12 14"/>
+  <g fill="#ecfeff">
+    <path d="M240 560 c0-22 18-40 40-40 s40 18 40 40 c0 34-40 76-40 76 s-40-42-40-76z"/>
+    <path d="M975 422 c0-18 15-33 33-33 s33 15 33 33 c0 29-33 64-33 64 s-33-35-33-64z"/>
+  </g>
+  <g fill="#ecfeff" font-family="Arial, sans-serif" font-size="36" font-weight="700">
+    <text x="110" y="120">TOURISM GUIDE PLATFORM</text>
+    <text x="110" y="166" font-size="22" opacity="0.9">DESTINATIONS + ROUTES + PLANNING</text>
+  </g>
+</svg>
